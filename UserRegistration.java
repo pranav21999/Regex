@@ -77,12 +77,16 @@ public class UserRegistration {
 	    	 System.out.println("Invalid MobileNo");
 	     } 
 	}
+
 	//method to check password Valid or Invalid
 	 public void validatePassword() {
 		 System.out.println("Enter Password");
 		 String password=sc.next();
-		 //regex pattern for password:must contain atleast 8 characters 
-		 String regex = "^[a-zA-z1-9]{8,}$";
+		 /*regex pattern for password:
+		  * 1)must contain atleast 8 characters 
+		  * 2)must contain one UpperCase
+		 */
+		 String regex = "^[A-Z]{1,}[a-zA-z1-9]{7,}$";
 		 Pattern p = Pattern.compile(regex);
 		 Matcher matcher = p.matcher(password);
 		 boolean result = matcher.matches();
@@ -95,7 +99,6 @@ public class UserRegistration {
 	     } 
 	}
 
-	
 	//Main method
 	public static void main(String[] args) {
 		UserRegistration registration=new UserRegistration();
