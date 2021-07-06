@@ -77,13 +77,31 @@ public class UserRegistration {
 	    	 System.out.println("Invalid MobileNo");
 	     } 
 	}
+	//method to check password Valid or Invalid
+	 public void validatePassword() {
+		 System.out.println("Enter Password");
+		 String password=sc.next();
+		 //regex pattern for password:must contain atleast 8 characters 
+		 String regex = "^[a-zA-z1-9]{8,}$";
+		 Pattern p = Pattern.compile(regex);
+		 Matcher matcher = p.matcher(password);
+		 boolean result = matcher.matches();
+		 
+	     if(result){
+	    	 System.out.println("Valid Password");
+	     }
+	     else {
+	    	 System.out.println("Invalid Password");
+	     } 
+	}
+
 	
 	//Main method
 	public static void main(String[] args) {
 		UserRegistration registration=new UserRegistration();
 		Scanner sc=new Scanner(System.in);
 		while(true) {
-			System.out.println("Enter choce\n 1)UserName\n 2)LastName\n 3)Email\n 4)PhoneNo");
+			System.out.println("Enter choce\n 1)UserName\n 2)LastName\n 3)Email\n 4)PhoneNo\n 5)password");
 			int choice=sc.nextInt();
 			switch(choice) {
 			case 1:
@@ -97,8 +115,12 @@ public class UserRegistration {
 				break;
 			case 4:
 				registration.validateMobileNo();
+				break;
+			case 5:
+				registration.validatePassword();
 				break;		
 			default:
+				System.out.println("Invalid choice");
 				System.exit(0);
 			}
 		}	
