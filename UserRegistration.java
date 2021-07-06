@@ -47,17 +47,22 @@ public class UserRegistration {
 	 public void validateEmail() {
 		 System.out.println("Enter Email");
 		 String email=sc.next();
-		 //regex pattern for email
+		 /*regex pattern for email
+		  * 1)must contain character before @
+		  * 2)must contain @ symbol after char
+		  * 3)must contain char after @
+		  * 4)must contain "."  symbol before com or in
+		  */
 		 String regex = "^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?";
 		 Pattern p = Pattern.compile(regex);
 		 Matcher matcher = p.matcher(email);
 		 boolean result = matcher.matches();
 		 
 	     if(result){
-	    	 System.out.println("Valid Email");
+	    	 System.out.println("Valid Email Address");
 	     }
 	     else {
-	    	 System.out.println("Invalid Email");
+	    	 System.out.println("Invalid Email Address");
 	     } 
 	}
 	 //method to check Phoneno Valid or Invalid	
@@ -77,7 +82,6 @@ public class UserRegistration {
 	    	 System.out.println("Invalid MobileNo");
 	     } 
 	}
-
 	//method to check password Valid or Invalid
 	 public void validatePassword() {
 		 System.out.println("Enter Password");
@@ -100,13 +104,14 @@ public class UserRegistration {
 	    	 System.out.println("Invalid Password");
 	     } 
 	}
-	
 
+	
 	//Main method
 	public static void main(String[] args) {
 		UserRegistration registration=new UserRegistration();
 		Scanner sc=new Scanner(System.in);
 		while(true) {
+			//userinput choice for checking Multiple validation
 			System.out.println("Enter choce\n 1)UserName\n 2)LastName\n 3)Email\n 4)PhoneNo\n 5)password");
 			int choice=sc.nextInt();
 			switch(choice) {
@@ -124,11 +129,11 @@ public class UserRegistration {
 				break;
 			case 5:
 				registration.validatePassword();
-				break;
+				break;		
 			default:
 				System.out.println("Invalid choice");
 				System.exit(0);
 			}
-		}
+		}	
 	}
 }
